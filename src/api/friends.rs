@@ -78,6 +78,7 @@ pub mod friends {
                     steamworks::FriendState::Snooze => PersonaState::Snooze,
                     steamworks::FriendState::LookingToTrade => PersonaState::LookingToTrade,
                     steamworks::FriendState::LookingToPlay => PersonaState::LookingToPlay,
+                    steamworks::FriendState::Invisible => PersonaState::Invisible,
                 },
                 game_played: f.game_played().map(|g| FriendGameInfo {
                     game_id: BigInt::from(g.game.raw()),
