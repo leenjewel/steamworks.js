@@ -62,7 +62,10 @@ pub mod stats {
     #[napi]
     pub fn get_global_int_history(name: String, max_days: u32) -> Option<Vec<i64>> {
         let client = crate::client::get_client();
-        client.user_stats().get_global_stat_history_i64(&name, max_days as usize).ok()
+        client
+            .user_stats()
+            .get_global_stat_history_i64(&name, max_days as usize)
+            .ok()
     }
 
     /// Gets history for an aggregated stat as f64 values.
@@ -70,7 +73,10 @@ pub mod stats {
     #[napi]
     pub fn get_global_float_history(name: String, max_days: u32) -> Option<Vec<f64>> {
         let client = crate::client::get_client();
-        client.user_stats().get_global_stat_history_f64(&name, max_days as usize).ok()
+        client
+            .user_stats()
+            .get_global_stat_history_f64(&name, max_days as usize)
+            .ok()
     }
 }
 
@@ -88,10 +94,12 @@ impl Task for RequestGlobalStatsTask {
         let tx = Arc::new(std::sync::Mutex::new(Some(tx)));
 
         let client = crate::client::get_client();
-        client.user_stats().request_global_stats(self.history_days, move |result| {
-            let tx = tx.lock().unwrap().take().unwrap();
-            let _ = tx.send(result);
-        });
+        client
+            .user_stats()
+            .request_global_stats(self.history_days, move |result| {
+                let tx = tx.lock().unwrap().take().unwrap();
+                let _ = tx.send(result);
+            });
 
         // Run callbacks until we get the result
         loop {
