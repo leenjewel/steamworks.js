@@ -56,4 +56,8 @@ export interface CallbackReturns {
     [client.callback.SteamCallback.GameOverlayActivated]: {
         active: boolean
     }
+    [client.callback.SteamCallback.GlobalStatsReceived]: {
+        game_id: number
+        success: boolean
+    }
 }

@@ -57,7 +57,8 @@ export declare namespace callback {
     P2PSessionConnectFail = 7,
     GameLobbyJoinRequested = 8,
     MicroTxnAuthorizationResponse = 9,
-    GameOverlayActivated = 10
+    GameOverlayActivated = 10,
+    GlobalStatsReceived = 11
   }
   export function register<C extends keyof import('./callbacks').CallbackReturns>(steamCallback: C, handler: (value: import('./callbacks').CallbackReturns[C]) => void): Handle
   export class Handle {
@@ -348,6 +349,31 @@ export declare namespace stats {
   export function setInt(name: string, value: number): boolean
   export function store(): boolean
   export function resetAll(achievementsToo: boolean): boolean
+  /**
+   * Asynchronously requests global stats data for aggregated stats.
+   * Returns the game ID if successful.
+   */
+  export function requestGlobalStats(historyDays: number): Promise<bigint>
+  /**
+   * Gets the lifetime total for an aggregated stat as an i64.
+   * Returns null if the stat doesn't exist or hasn't been received yet.
+   */
+  export function getGlobalInt(name: string): number | null
+  /**
+   * Gets the lifetime total for an aggregated stat as an f64.
+   * Returns null if the stat doesn't exist or hasn't been received yet.
+   */
+  export function getGlobalFloat(name: string): number | null
+  /**
+   * Gets history for an aggregated stat as i64 values.
+   * Returns daily values starting with today (index 0).
+   */
+  export function getGlobalIntHistory(name: string, maxDays: number): Array<number> | null
+  /**
+   * Gets history for an aggregated stat as f64 values.
+   * Returns daily values starting with today (index 0).
+   */
+  export function getGlobalFloatHistory(name: string, maxDays: number): Array<number> | null
 }
 export declare namespace utils {
   export function getAppId(): number

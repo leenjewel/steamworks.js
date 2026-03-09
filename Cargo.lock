@@ -338,8 +338,8 @@ checksum = "7a2ae44ef20feb57a68b23d846850f861394c2e02dc425a50098ae8c90267589"
 
 [[package]]
 name = "steamworks"
-version = "0.12.1"
-source = "git+https://github.com/Noxime/steamworks-rs/?rev=40a457a61f5ef714d93804e51e0c5e3d405145a3#40a457a61f5ef714d93804e51e0c5e3d405145a3"
+version = "0.12.2"
+source = "git+https://github.com/leenjewel/steamworks-rs/?rev=9aeb941cb459e916e344f1e6de63c1cd94b9af30#9aeb941cb459e916e344f1e6de63c1cd94b9af30"
 dependencies = [
  "bitflags",
  "paste",
@@ -351,7 +351,7 @@ dependencies = [
 [[package]]
 name = "steamworks-sys"
 version = "0.12.0"
-source = "git+https://github.com/Noxime/steamworks-rs/?rev=40a457a61f5ef714d93804e51e0c5e3d405145a3#40a457a61f5ef714d93804e51e0c5e3d405145a3"
+source = "git+https://github.com/leenjewel/steamworks-rs/?rev=9aeb941cb459e916e344f1e6de63c1cd94b9af30#9aeb941cb459e916e344f1e6de63c1cd94b9af30"
 
 [[package]]
 name = "steamworksjs"

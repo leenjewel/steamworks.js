@@ -49,6 +49,7 @@ pub mod callback {
         GameLobbyJoinRequested,
         MicroTxnAuthorizationResponse,
         GameOverlayActivated,
+        GlobalStatsReceived,
     }
 
     #[napi(ts_generic_types = "C extends keyof import('./callbacks').CallbackReturns")]
@@ -94,6 +95,9 @@ pub mod callback {
             }
             SteamCallback::GameOverlayActivated => {
                 register_callback::<steamworks::GameOverlayActivated>(threadsafe_handler)
+            }
+            SteamCallback::GlobalStatsReceived => {
+                register_callback::<steamworks::GlobalStatsReceived>(threadsafe_handler)
             }
         };
 
